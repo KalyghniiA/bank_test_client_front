@@ -1,0 +1,17 @@
+.page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 48px var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.title {
+  font: var(--text-h1);
+}
+
+.text {
+  color: var(--color-text-secondary);
+}
