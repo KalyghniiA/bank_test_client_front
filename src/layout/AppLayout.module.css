@@ -1,0 +1,98 @@
+.layout {
+  min-height: 100dvh;
+}
+
+/* ---------- Телефон: нижнее меню ---------- */
+.header {
+  display: none;
+}
+
+.content {
+  /* Место под фиксированное нижнее меню (и «чёлку» снизу на iPhone). */
+  padding-bottom: calc(64px + env(safe-area-inset-bottom));
+}
+
+.tabBar {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 10;
+  display: flex;
+  height: calc(64px + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1px solid var(--color-border-default);
+  background: var(--color-bg-surface);
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: var(--color-text-tertiary);
+  font: var(--text-caption-medium);
+}
+
+.tabActive {
+  color: var(--color-text-primary);
+}
+
+/* ---------- Планшет и десктоп: шапка ---------- */
+@media (min-width: 768px) {
+  .tabBar {
+    display: none;
+  }
+
+  .content {
+    padding-bottom: 0;
+  }
+
+  .header {
+    display: block;
+    border-bottom: 1px solid var(--color-border-default);
+    background: var(--color-bg-surface);
+  }
+
+  .headerInner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-10);
+    max-width: 1120px;
+    height: 72px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+  }
+
+  .headerNav {
+    flex: 1;
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .navLink {
+    padding: var(--space-2) 14px;
+    border-radius: var(--radius-s);
+    color: var(--color-text-secondary);
+    font: var(--text-body-medium);
+  }
+
+  .navLink:hover {
+    color: var(--color-text-primary);
+  }
+
+  .active {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .userName {
+    font: var(--text-body-medium);
+  }
+}

@@ -55,12 +55,13 @@ describe('страница входа', () => {
           ? HttpResponse.json(person)
           : HttpResponse.json({ message: 'Требуется аутентификация' }, { status: 401 }),
       ),
+      http.get('/api/me/accounts', () => HttpResponse.json([])),
     )
     const { router } = renderApp('/auth?next=%2F')
     await fillAndSubmit('  ivan.petrov ', 'secret123')
 
     await waitFor(() => expect(router.state.location.pathname).toBe('/'))
-    expect(await screen.findByRole('heading', { name: 'Здравствуйте, Иван' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: 'Главная' })).toBeInTheDocument()
     expect(sentBody).toEqual({ login: 'ivan.petrov', password: 'secret123' })
   })
 
