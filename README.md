@@ -31,6 +31,17 @@ React + TypeScript + Vite. Макеты — Figma «Банк — макеты»,
 
 Моки описаны в `src/mocks/handlers.ts`: эндпоинты из раздела «Планируется» промпта (счета, операции, переводы). Всё, что не описано, уходит на настоящий бэкенд. Выключить моки — `VITE_MOCKS=false` в `.env.development.local`.
 
+### Сценарии моков
+
+Состояния экранов переключаются в консоли браузера (DevTools → Console), затем обновить страницу:
+
+```js
+localStorage.setItem('mock:accounts', 'empty') // нет счетов
+localStorage.setItem('mock:accounts', 'error') // ошибка 500 с кодом для поддержки
+localStorage.setItem('mock:accounts', 'slow') // загрузка 3 секунды
+localStorage.removeItem('mock:accounts') // обычные счета
+```
+
 ## Стек
 
 React 19, React Router 7, TanStack Query 5, react-hook-form + zod, CSS Modules + токены из `@bank/ui`, MSW 2, Vitest 4.

@@ -1,17 +1,270 @@
+/* ---------- Телефон ---------- */
 .page {
-  max-width: 560px;
-  margin: 0 auto;
-  padding: 48px var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-4) var(--space-4) var(--space-6);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-m);
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-primary);
+  color: var(--color-text-on-accent);
+  font: var(--text-caption-medium);
+}
+
+.profileName {
+  flex: 1;
+  font: var(--text-h3);
+}
+
+.profileChevron {
+  color: var(--color-text-tertiary);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.totalLabel {
+  color: var(--color-text-secondary);
+}
+
+.totalAmount {
+  font: var(--text-display);
+  letter-spacing: -0.5px;
+}
+
+.greeting {
+  font: var(--text-h2);
+}
+
+.quickActions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heroActions {
+  display: none;
+}
+
+.accounts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.accountsHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accountsTitle {
+  font: var(--text-h3);
+}
+
+.openLink {
+  display: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list a {
+  height: 100%;
+}
+
+.skeletonCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-l);
+  background: var(--color-bg-surface);
+}
+
+.skeletonLines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.error {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
-.title {
-  font: var(--text-h1);
+/* Нет счетов */
+.emptyCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-6);
+  border-radius: var(--radius-l);
+  background: var(--color-bg-surface);
+  text-align: center;
 }
 
-.text {
+.emptyIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-l);
+  background: var(--color-accent-primary);
+  color: var(--color-text-on-accent);
+}
+
+.emptyTitle {
+  font: var(--text-h2);
+}
+
+.emptyText {
+  margin-bottom: var(--space-2);
   color: var(--color-text-secondary);
+}
+
+.types {
+  display: none;
+}
+
+/* ---------- Планшет и десктоп ---------- */
+@media (min-width: 768px) {
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    gap: var(--space-6);
+    padding: var(--space-10) var(--space-6) 64px;
+  }
+
+  .profile,
+  .quickActions,
+  .emptyCard {
+    display: none;
+  }
+
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px var(--space-8);
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-surface);
+  }
+
+  .heroActions {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .greeting {
+    font: var(--text-h1);
+  }
+
+  .accounts {
+    gap: var(--space-4);
+  }
+
+  .accountsTitle {
+    font: var(--text-h2);
+  }
+
+  .openLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font: var(--text-body-medium);
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .types {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .typesList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .typeCard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    border-radius: var(--radius-l);
+    background: var(--color-bg-surface);
+  }
+
+  .typeIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-m);
+    color: var(--color-text-inverse);
+  }
+
+  .default {
+    background: var(--color-account-default);
+  }
+
+  .saving {
+    background: var(--color-account-saving);
+  }
+
+  .checking {
+    background: var(--color-account-checking);
+  }
+
+  .typeTitle {
+    font: var(--text-h3);
+  }
+
+  .typeText {
+    color: var(--color-text-secondary);
+  }
 }

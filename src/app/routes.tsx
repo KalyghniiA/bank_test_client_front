@@ -1,4 +1,5 @@
 import type { RouteObject } from 'react-router'
+import { AppLayout } from '../layout/AppLayout'
 import { AuthPage } from '../pages/AuthPage/AuthPage'
 import { HomePage } from '../pages/HomePage/HomePage'
 import { NotFoundPage } from '../pages/NotFoundPage/NotFoundPage'
@@ -10,8 +11,14 @@ export const routes: RouteObject[] = [
   { path: '/auth', element: <AuthPage /> },
   { path: '/register', element: <RegisterPage /> },
   {
+    // Страницы вошедшего клиента: проверка сессии → общий каркас (шапка, нижнее меню) → страница.
     element: <RequireAuth />,
-    children: [{ path: '/', element: <HomePage /> }],
+    children: [
+      {
+        element: <AppLayout />,
+        children: [{ path: '/', element: <HomePage /> }],
+      },
+    ],
   },
   { path: '*', element: <NotFoundPage /> },
 ]
