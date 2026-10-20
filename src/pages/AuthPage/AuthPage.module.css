@@ -1,0 +1,90 @@
+/* Телефон: экран целиком, ссылка на регистрацию прижата к низу. */
+.page {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: 48px var(--space-4) var(--space-6);
+}
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  font: var(--text-h1);
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.footer a {
+  font: var(--text-body-medium);
+}
+
+/* Планшет и десктоп: карточка по центру, логотип над ней. */
+@media (min-width: 768px) {
+  .page {
+    align-items: center;
+    padding: 80px var(--space-4);
+  }
+
+  .container {
+    width: auto;
+    align-items: center;
+    padding: 0;
+  }
+
+  .card {
+    flex: none;
+    width: 440px;
+    padding: var(--space-10);
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .footer {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
