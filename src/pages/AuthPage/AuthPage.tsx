@@ -2,7 +2,7 @@ import { Alert, Button, Logo, TextField } from '@bank/ui'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
-import { Link, Navigate, useNavigate, useSearchParams } from 'react-router'
+import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react-router'
 import { z } from 'zod'
 import { isApiError } from '../../api/ApiError'
 import { login } from '../../api/auth'
@@ -19,11 +19,25 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>
 
+/** Логин, переданный со страницы регистрации через состояние роутера (в адрес не попадает). */
+function loginFromState(state: unknown): string {
+  if (
+    typeof state === 'object' &&
+    state !== null &&
+    'login' in state &&
+    typeof state.login === 'string'
+  ) {
+    return state.login
+  }
+  return ''
+}
+
 export function AuthPage() {
   const [searchParams] = useSearchParams()
   const next = safeNext(searchParams.get('next'))
   const reason = parseReason(searchParams.get('reason'))
 
+  const location = useLocation()
   const navigate = useNavigate()
   const queryClient = useQueryClient()
   const me = useMe()
@@ -32,7 +46,10 @@ export function AuthPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({ resolver: zodResolver(schema) })
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: { login: loginFromState(location.state), password: '' },
+  })
 
   const signIn = useMutation({
     mutationFn: login,
